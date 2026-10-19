@@ -44,7 +44,7 @@ export function AssignmentCard({
         style={styles.checkbox}
       >
         <Icon
-          name={assignment.completed ? 'checkbox' : 'square-outline'}
+          name={assignment.completed ? 'checkmark-circle' : 'ellipse-outline'}
           size={26}
           color={assignment.completed ? c.success : c.muted}
         />
@@ -55,14 +55,26 @@ export function AssignmentCard({
         onPress={onPress}
         style={({ pressed }) => [s.grow, styles.details, pressed && s.pressed]}
       >
+        <View style={s.spread}>
+          <Text style={styles.code}>{assignment.courseId}</Text>
+          <StatusBadge status={status} />
+        </View>
+        <Text style={[s.label, assignment.completed && styles.completed]}>
+          {assignment.title}
+        </Text>
         <Text style={s.muted}>
           {findCourse(assignment.courseId)?.name ?? assignment.courseId}
         </Text>
-        <Text style={s.label}>{assignment.title}</Text>
-        <Text style={[s.muted, status === 'overdue' && styles.overdue]}>
-          Hạn: {formatDeadline(assignment.dueDate)}
-        </Text>
-        <StatusBadge status={status} />
+        <View style={styles.deadline}>
+          <Icon
+            name="time-outline"
+            size={14}
+            color={status === 'overdue' ? c.warning : c.muted}
+          />
+          <Text style={[s.muted, status === 'overdue' && styles.overdue]}>
+            {formatDeadline(assignment.dueDate)}
+          </Text>
+        </View>
       </Pressable>
     </View>
   );
@@ -71,7 +83,8 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     gap: 8,
-    paddingLeft: 8,
+    paddingLeft: 6,
+    paddingRight: 16,
     alignItems: 'flex-start',
   },
   checkbox: {
@@ -80,6 +93,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  details: { gap: 8, minHeight: 44 },
+  details: { gap: 6, minHeight: 44 },
   overdue: { color: c.warning },
+  code: {
+    color: c.primary,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.3,
+  },
+  deadline: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginTop: 2,
+  },
+  completed: { color: c.muted },
 });

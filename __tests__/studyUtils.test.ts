@@ -118,7 +118,7 @@ test('kiểm tra họ tên, email và số điện thoại trước khi lưu', (
   expect(
     validateStudent({
       fullName: ' Hoàng Văn Hùng ',
-      email: 'anh@example.com',
+      email: 'Hung@example.com',
       phone: '+84 912 345 678',
     }),
   ).toEqual({});

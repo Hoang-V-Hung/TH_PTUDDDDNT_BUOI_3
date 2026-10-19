@@ -44,6 +44,7 @@ export default function SessionDetailScreen({
   return (
     <DetailPage>
       <PageHeading
+        detail
         title={course?.name ?? session.courseId}
         subtitle={session.type}
       />
@@ -51,20 +52,33 @@ export default function SessionDetailScreen({
         <InfoRow
           label="Ngày học"
           value={`${dayNames[date.getDay()]}, ${formatDate(date)}`}
+          icon="calendar-outline"
         />
         <InfoRow
           label="Thời gian"
           value={`${session.startTime} – ${session.endTime}`}
+          icon="time-outline"
         />
-        <InfoRow label="Phòng học" value={session.room} />
-        <InfoRow label="Mã môn học" value={session.courseId} />
+        <InfoRow
+          label="Phòng học"
+          value={session.room}
+          icon="location-outline"
+        />
+        <View style={s.divider} />
+        <InfoRow
+          label="Mã môn học"
+          value={session.courseId}
+          icon="book-outline"
+        />
         <InfoRow
           label="Giảng viên"
           value={course?.lecturer ?? 'Chưa cập nhật'}
+          icon="person-outline"
         />
         <InfoRow
           label="Chuẩn bị trước buổi học"
           value={session.note || 'Không có ghi chú.'}
+          icon="document-text-outline"
         />
       </View>
       <Button

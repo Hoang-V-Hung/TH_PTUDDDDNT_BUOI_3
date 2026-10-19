@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import type { RouteProp } from '@react-navigation/native';
@@ -15,11 +15,11 @@ import { studyColors as c } from '../theme/studyTheme';
 
 const Tab = createBottomTabNavigator<StudyTabParamList>();
 const icons: Record<keyof StudyTabParamList, [string, string]> = {
-  Overview: ['grid', 'grid-outline'],
+  Overview: ['home', 'home-outline'],
   Courses: ['book', 'book-outline'],
   Schedule: ['calendar', 'calendar-outline'],
   Assignments: ['checkbox', 'checkbox-outline'],
-  Profile: ['person-circle', 'person-circle-outline'],
+  Profile: ['person', 'person-outline'],
 };
 function screenOptions({
   route,
@@ -35,11 +35,13 @@ function screenOptions({
     tabBarLabelPosition: 'below-icon',
     tabBarHideOnKeyboard: true,
     tabBarIcon: ({ focused, color, size }) => (
-      <Icon
-        name={icons[route.name][focused ? 0 : 1]}
-        color={color}
-        size={size}
-      />
+      <View style={[styles.icon, focused && styles.activeIcon]}>
+        <Icon
+          name={icons[route.name][focused ? 0 : 1]}
+          color={color}
+          size={Math.min(size, 22)}
+        />
+      </View>
     ),
   };
 }
@@ -53,7 +55,7 @@ export default function StudyTabNavigator() {
         tabBarStyle: [
           styles.tabBar,
           {
-            height: 64 + insets.bottom,
+            height: 70 + insets.bottom,
             paddingBottom: Math.max(insets.bottom, 8),
           },
         ],
@@ -94,7 +96,16 @@ const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: c.surface,
     borderTopColor: c.border,
-    paddingTop: 6,
+    paddingTop: 7,
+    elevation: 0,
   },
-  label: { fontSize: 11, fontWeight: '500' },
+  label: { fontSize: 10, fontWeight: '600', marginTop: 3 },
+  icon: {
+    width: 48,
+    height: 30,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activeIcon: { backgroundColor: c.primarySoft },
 });

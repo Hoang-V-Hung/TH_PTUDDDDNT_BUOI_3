@@ -251,7 +251,7 @@ export function createInitialStudyState(now = new Date()): StudyState {
     student: {
       id: 'B23DCCC076',
       fullName: 'Hoàng Văn Hùng',
-      className: 'CNTT-UDU-D23',
+      className: 'D23CCPM02',
       major: 'Công nghệ thông tin định hướng ứng dụng',
       email: 'HungHV.B23CC076@stu.ptit.edu.vn',
       phone: '0374585171',

@@ -13,12 +13,12 @@ export const STUDY_BACKUP_KEY = `${STUDY_STORAGE_KEY}/backup`;
 
 // Bản v1 chưa lưu thông tin mẫu gốc để phân biệt với các chỉnh sửa trong app.
 const legacySeedStudent: Student = {
-  id: '23020345',
-  fullName: 'Nguyễn Minh Anh',
-  className: 'CNTT-K68',
-  major: 'Công nghệ thông tin',
-  email: 'minhanh.23020345@sv.edu.vn',
-  phone: '0912345678',
+  id: 'B23DCCC076',
+  fullName: 'Hoàng Văn Hùng',
+  className: 'D23CCPM02',
+  major: 'Công nghệ thông tin định hướng ứng dụng',
+  email: 'HungHV.B23CC076@stu.ptit.edu.vn',
+  phone: '0374585171',
 };
 const studentKeys: (keyof Student)[] = [
   'id',

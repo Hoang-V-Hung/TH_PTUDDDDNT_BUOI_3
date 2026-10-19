@@ -41,22 +41,22 @@ test('cập nhật liên tiếp vẫn lưu đủ hồ sơ và trạng thái bài
       context.toggleAssignment('assignment-1'),
       context.toggleAssignment('assignment-2'),
       context.updateStudent({
-        fullName: 'Trần Minh An',
-        email: 'an@example.com',
-        phone: '0987654321',
+        fullName: 'Hoàng Văn Hùng',
+        email: 'hung@example.com',
+        phone: '0374585171',
       }),
     ]);
   });
-  expect(context.student.fullName).toBe('Trần Minh An');
+  expect(context.student.fullName).toBe('Hoàng Văn Hùng');
   expect(context.assignments.slice(0, 2).every(item => item.completed)).toBe(
     true,
   );
-  expect((await loadStudyState())?.student.fullName).toBe('Trần Minh An');
+  expect((await loadStudyState())?.student.fullName).toBe('Hoàng Văn Hùng');
   await act(async () => renderer.unmount());
   await mount();
   expect(context.assignments[0].dueDate).toBe(originalDeadline);
   expect(context.assignments[0].completed).toBe(true);
-  expect(context.student.fullName).toBe('Trần Minh An');
+  expect(context.student.fullName).toBe('Hoàng Văn Hùng');
 });
 
 test('lỗi ghi có thông báo và có thể thử lại', async () => {

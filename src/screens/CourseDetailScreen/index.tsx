@@ -47,17 +47,31 @@ export default function CourseDetailScreen({
   return (
     <DetailPage>
       <PageHeading
+        detail
         title={course.name}
         subtitle={`${course.id} · ${course.credits} tín chỉ`}
       />
       <View style={s.card}>
-        <InfoRow label="Học kỳ" value={course.semester} />
-        <InfoRow label="Giảng viên" value={course.lecturer} />
+        <InfoRow
+          label="Học kỳ"
+          value={course.semester}
+          icon="calendar-outline"
+        />
+        <View style={s.divider} />
+        <InfoRow
+          label="Giảng viên"
+          value={course.lecturer}
+          icon="person-outline"
+        />
         <InfoRow
           label="Trạng thái"
           value={course.status === 'active' ? 'Đang học' : 'Đã hoàn thành'}
+          icon="book-outline"
         />
-        <InfoRow label="Giới thiệu môn học" value={course.description} />
+      </View>
+      <SectionHeading title="Giới thiệu môn học" />
+      <View style={s.card}>
+        <Text style={s.body}>{course.description}</Text>
       </View>
       {result && (
         <Button

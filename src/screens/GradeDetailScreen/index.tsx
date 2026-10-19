@@ -12,7 +12,7 @@ import {
   PageHeading,
   SectionHeading,
 } from '../../components/study/StudyUI';
-import { studyStyles as s } from '../../theme/studyTheme';
+import { studyStyles as s, studyColors as c } from '../../theme/studyTheme';
 
 export default function GradeDetailScreen({
   route,
@@ -38,10 +38,16 @@ export default function GradeDetailScreen({
   return (
     <DetailPage>
       <PageHeading
+        detail
         title={course?.name ?? result.courseId}
         subtitle={course?.semester}
       />
-      <View style={s.card}>
+      <View
+        style={[
+          s.card,
+          { backgroundColor: c.primarySoft, borderColor: c.primarySoft },
+        ]}
+      >
         <View style={s.row}>
           <Metric value={average.toFixed(2)} label="Điểm tổng kết / 10" />
           <Metric
@@ -49,6 +55,7 @@ export default function GradeDetailScreen({
             label={`${grade.point.toFixed(1)} / 4 · ${grade.label}`}
           />
         </View>
+        <View style={s.divider} />
         <InfoRow label="Mã môn học" value={result.courseId} />
         <InfoRow label="Số tín chỉ" value={String(course?.credits ?? 0)} />
       </View>

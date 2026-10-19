@@ -11,9 +11,10 @@ import {
 import { AssignmentCard } from '../../components/study/AssignmentCard';
 import {
   EmptyState,
-  Field,
+  SearchField,
+  CompletionSummary,
   FilterChips,
-  PageHeading,
+  AppHeader,
   Screen,
 } from '../../components/study/StudyUI';
 import { studyStyles as s } from '../../theme/studyTheme';
@@ -47,25 +48,35 @@ export default function AssignmentsScreen({
     );
   const completed = assignments.filter(item => item.completed).length;
   return (
-    <Screen>
+    <Screen
+      header={
+        <AppHeader
+          title="Bài tập"
+          subtitle="Theo dõi hạn nộp và tiến độ hoàn thành"
+        />
+      }
+    >
       <FlatList
         data={filtered}
         keyExtractor={item => item.id}
         keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={s.content}
         ListHeaderComponent={
           <View>
-            <PageHeading
-              title="Bài tập"
-              subtitle={`${completed}/${assignments.length} bài đã hoàn thành`}
-            />
-            <Field
-              label="Tìm kiếm bài tập"
-              placeholder="Tên bài tập hoặc môn học"
-              value={query}
-              onChangeText={setQuery}
-              autoCorrect={false}
-            />
+            <View style={s.section}>
+              <CompletionSummary
+                completed={completed}
+                total={assignments.length}
+              />
+              <SearchField
+                label="Tìm kiếm bài tập"
+                placeholder="Tên bài tập hoặc môn học"
+                value={query}
+                onChangeText={setQuery}
+              />
+            </View>
             <FilterChips<AssignmentFilter>
               value={filter}
               onChange={setFilter}

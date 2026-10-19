@@ -54,13 +54,19 @@ export default function AssignmentDetailScreen({
   return (
     <DetailPage>
       <PageHeading
+        detail
         title={item.title}
         subtitle={findCourse(item.courseId)?.name ?? item.courseId}
       />
       <View style={s.card}>
         <StatusBadge status={assignmentStatus(item, now)} />
-        <InfoRow label="Hạn nộp" value={formatDeadline(item.dueDate)} />
-        <InfoRow label="Mã môn học" value={item.courseId} />
+        <InfoRow
+          label="Hạn nộp"
+          value={formatDeadline(item.dueDate)}
+          icon="time-outline"
+        />
+        <InfoRow label="Mã môn học" value={item.courseId} icon="book-outline" />
+        <View style={s.divider} />
         <Text style={s.heading}>Yêu cầu bài tập</Text>
         <Text selectable style={s.body}>
           {item.description}

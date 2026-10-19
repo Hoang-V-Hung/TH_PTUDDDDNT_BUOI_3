@@ -14,6 +14,8 @@ export type StudyTabParamList = {
 };
 export type RootStackParamList = {
   MainTabs: NavigatorScreenParams<StudyTabParamList> | undefined;
+  StudentProfile: undefined;
+  AcademicResults: undefined;
   CourseDetail: { courseId: string };
   SessionDetail: { sessionId: string; date: string };
   AssignmentDetail: { assignmentId: string };

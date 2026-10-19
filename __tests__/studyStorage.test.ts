@@ -65,12 +65,12 @@ test('hồ sơ mẫu v1 cũ được thay bằng studyData mới và giữ tiế
   expected.assignments[4].completed = true;
   const oldState = {
     student: {
-      id: '23020345',
-      fullName: 'Nguyễn Minh Anh',
-      className: 'CNTT-K68',
-      major: 'Công nghệ thông tin',
-      email: 'minhanh.23020345@sv.edu.vn',
-      phone: '0912345678',
+      id: 'B23DCCC076',
+      fullName: 'Hoàng Văn Hùng',
+      className: 'D23CCPM02',
+      major: 'Công nghệ thông tin định hướng ứng dụng',
+      email: 'HungHV.B23CC076@stu.ptit.edu.vn',
+      phone: '0374585171',
     },
     assignments: expected.assignments.map(item => ({
       ...item,
